@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="javasrpt3.js"></script>
+    <link rel="stylesheet" href="p3.css">
+</head>
+<body>
+
+<div class="row mt-4">
+    <!-- PEOPLE SECTION -->
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header bg-primary text-white">
+                <h4>👥 Manage People</h4>
+            </div>
+            <div class="card-body">
+                <button class="btn btn-success mb-3" onclick="openAddPersonModal()">
+                    + Add Person
+                </button>
+                <table class="table table-bordered table-striped">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>Full Name</th>
+                            <th>Email</th>
+                            <th>Username</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="peopleTable">
+                        <tr><td colspan="4" class="text-center">Loading...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- PROJECTS SECTION -->
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header bg-success text-white">
+                <h4>📁 Manage Projects</h4>
+            </div>
+            <div class="card-body">
+                <button class="btn btn-success mb-3" onclick="openAddProjectModal()">
+                    + Add Project
+                </button>
+                <table class="table table-bordered table-striped">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>Project Name</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="projectsTable">
+                        <tr><td colspan="2" class="text-center">Loading...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- PERSON MODAL (Add/Edit) -->
+<div class="modal fade" id="personModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="personModalTitle">Add Person</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" id="personId">
+                <input type="text" id="personName" class="form-control mb-2" placeholder="First Name *">
+                <input type="text" id="personSurname" class="form-control mb-2" placeholder="Surname *">
+                <input type="email" id="personEmail" class="form-control mb-2" placeholder="Email *">
+                <input type="text" id="personUsername" class="form-control mb-2" placeholder="Username *">
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button class="btn btn-primary" onclick="savePersonFromModal()">Save</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- PROJECT MODAL Add/Edit -->
+<div class="modal fade" id="projectModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="projectModalTitle">Add Project</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" id="projectId">
+                <input type="text" id="projectName" class="form-control" placeholder="Project Name *">
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button class="btn btn-primary" onclick="saveProjectFromModal()">Save</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
