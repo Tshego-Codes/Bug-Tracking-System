@@ -6,8 +6,35 @@
     <title>Document</title>
     <script src="javasrpt3.js"></script>
     <link rel="stylesheet" href="p3.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="nav_style.css">
 </head>
 <body>
+
+<nav class="nav-container">
+        
+        <div class="nav-wrapper">
+            <!-- Logo -->
+            <div class="nav-logo">
+                <div class="logo-icon">
+                    <i class="fas fa-bug"></i>
+                </div>
+                <span class="logo-text">BugTracker</span>
+            </div>
+
+            <!-- Center Links - LIKE LINEAR -->
+
+            <div class="nav-links">
+                <a href="home.html" class="nav-link active" id="navDashboard">Dashboard</a>
+                <a href="issue_tracker.html" class="nav-link" id="navIssues">Tickets</a>
+                <a href="people.html" class="nav-link" id="navPeople">People</a>
+                <a href="project.html" class="nav-link" id="navProjects">Projects</a>
+            </div>
+
+            <!--CTA--> 
+            <button class="btn primary" onclick="openCreate()">+ New ticket</button>
+        </div>
+    </nav>
 
 <div class="row mt-4">
     <!-- PEOPLE SECTION -->
