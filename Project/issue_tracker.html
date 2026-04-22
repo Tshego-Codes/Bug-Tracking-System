@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -15,65 +16,67 @@
 <body>
   <nav class="nav-container">
     <div class="linear-nav">
-       <div class="nav-wrapper">
-          <!-- Logo -->
-          <div class="nav-logo">
-              
-              <div class="logo-icon">
-                  <i class="fas fa-bug"></i>
-              </div>
-              <a href="home.html" class="logo-text">BugTracker</a>
-          </div>
+      <div class="nav-wrapper">
+        <!-- Logo -->
+        <div class="nav-logo">
 
-          <!-- Center Links - LIKE LINEAR -->
-
-          <div class="nav-links">
-              <a href="home.html" class="nav-link" id="navDashboard">Dashboard</a>
-              <a href="issue_tracker.html" class="nav-link" id="navIssues">Tickets</a>
-              <a href="people.html" class="nav-link" id="navPeople">People</a>
-              <a href="project.html" class="nav-link" id="navProjects">Projects</a>
+          <div class="logo-icon">
+            <i class="fas fa-bug"></i>
           </div>
-          
-          <!--hidden--> 
-            <div></div>
+          <a href="home.html" class="logo-text">BugTracker</a>
+        </div>
+
+        <!-- Center Links - LIKE LINEAR -->
+
+        <div class="nav-links">
+          <a href="home.html" class="nav-link" id="navDashboard">Dashboard</a>
+          <a href="issue_tracker.html" class="nav-link" id="navIssues">Tickets</a>
+          <a href="people.html" class="nav-link" id="navPeople">People</a>
+          <a href="project.html" class="nav-link" id="navProjects">Projects</a>
+        </div>
+
+        <!--hidden-->
+        <div></div>
       </div>
     </div>
-     
-    </nav>
- 
-<div class="container">
-  <div class="top-bar">
-    <h1>Issue Tracker</h1>
-    <button class="btn primary" onclick="openCreate()">+ New ticket</button>
+
+  </nav>
+
+  <div class="container">
+    <div class="top-bar">
+      <h1>Issue Tracker</h1>
+      <button class="btn primary" onclick="openCreate()">+ New ticket</button>
+    </div>
+
+    <div class="stats-bar" id="stats-bar"></div>
+
+    <div class="filters">
+      <select id="f-status" onchange="renderList()">
+        <option value="">All statuses</option>
+        <option>open</option>
+        <option>resolved</option>
+        <option>overdue</option>
+      </select>
+      <select id="f-priority" onchange="renderList()">
+        <option value="">All priorities</option>
+        <option>low</option>
+        <option>medium</option>
+        <option>high</option>
+      </select>
+      <select id="f-project" onchange="renderList()">
+        <option value="">All projects</option>
+      </select>
+      <input type="text" id="f-search" placeholder="Search tickets..." oninput="renderList()"
+        style="flex:1;min-width:140px">
+    </div>
+
+    <div class="ticket-grid" id="ticket-list"></div>
   </div>
- 
-  <div class="stats-bar" id="stats-bar"></div>
- 
-  <div class="filters">
-    <select id="f-status" onchange="renderList()">
-      <option value="">All statuses</option>
-      <option>open</option>
-      <option>resolved</option>
-      <option>overdue</option>
-    </select>
-    <select id="f-priority" onchange="renderList()">
-      <option value="">All priorities</option>
-      <option>low</option>
-      <option>medium</option>
-      <option>high</option>
-    </select>
-    <select id="f-project" onchange="renderList()">
-      <option value="">All projects</option>
-    </select>
-    <input type="text" id="f-search" placeholder="Search tickets..." oninput="renderList()" style="flex:1;min-width:140px">
+
+  <!-- Modal -->
+  <div id="modal-bg" class="modal-bg" style="display:none" onclick="bgClose(event)">
+    <div class="modal" id="modal-box"></div>
   </div>
- 
-  <div class="ticket-grid" id="ticket-list"></div>
-</div>
- 
-<!-- Modal -->
-<div id="modal-bg" class="modal-bg" style="display:none" onclick="bgClose(event)">
-  <div class="modal" id="modal-box"></div>
-</div> 
 </body>
+
 </html>

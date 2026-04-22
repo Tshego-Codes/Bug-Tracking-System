@@ -38,53 +38,64 @@
         </div>    
     </nav>
 
-    <div class="container">
-        <div class="nav-links">
-            <a href="people.html">Manage People</a>
-            <a href="project.html" class="active">Manage Projects</a>
-        </div>
-
-        <div class="card">
-            <div class="card-header bg-success">
-                Add New Project
+    <div class="form-content-wrapper">
+        <div class="form-content">
+            <div class="card">
+                <h3 class="card-header bg-success">
+                    Add a New Project
+                </h3>
+                <div class="card-body">
+                    <form id="projectForm">
+                        <div class="mb-3">
+                            <label class="form-label">Project Name</label>
+                            <input type="text" id="projectName" class="form-control" placeholder="Enter project name"
+                                required>
+                        </div>
+                        <button type="button" class="btn btn-success" onclick="addProjectFromPage()">Save Project</button>
+                        <button type="button" class="btn btn-secondary" onclick="clearForm()">Clear</button>
+                    </form>
+                </div>
             </div>
-            <div class="card-body">
-                <form id="projectForm">
-                    <div class="mb-3">
-                        <label class="form-label">Project Name</label>
-                        <input type="text" id="projectName" class="form-control" placeholder="Enter project name"
-                            required>
+
+            <div class="card">
+                <h3 class="card-header bg-success">
+                    List of Projects
+                </h3>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-striped table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Project Name</th>
+                                    <th>Project ID</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="projectsTable">
+                                <tr>
+                                    <td colspan="3" class="text-center">Loading...</td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
-                    <button type="button" class="btn btn-success" onclick="addProjectFromPage()">Save Project</button>
-                    <button type="button" class="btn btn-secondary" onclick="clearForm()">Clear</button>
-                </form>
-            </div>
-        </div>
-
-        <div class="card">
-            <div class="card-header bg-success">
-                Projects List
-            </div>
-            <div class="card-body">
-                <div class="table-responsive">
-                    <table class="table table-striped table-hover">
-                        <thead>
-                            <tr>
-                                <th>Project Name</th>
-                                <th>Project ID</th>
-                                <th>Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody id="projectsTable">
-                            <tr>
-                                <td colspan="3" class="text-center">Loading...</td>
-                            </tr>
-                        </tbody>
-                    </table>
                 </div>
             </div>
         </div>
+        <aside class="form-actions">
+            <h3>Quick Actions </h3>
+                <button class="form-action-button" onclick="window.location.href='people.html'">
+                    <i class="fa fa-user quick-action-icon" aria-hidden="true"></i>
+                    <div class="form-action-text">Manage People</div>
+                </button>
+                <button class="form-action-button" onclick="window.location.href='people.html'">
+                    <i class="fa fa-tasks quick-action-icon" aria-hidden="true"></i>
+                    <div class="form-action-text">Manage Projects</div>
+                </button>
+        </aside>
     </div>
+
+
+
 
     <footer>
         <p>Bug Tracking System - Project Management</p>

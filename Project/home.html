@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,6 +10,7 @@
     <link rel="stylesheet" href="master_styles.css">
     <script src="app2.js" defer></script>
 </head>
+
 <body>
     <nav class="nav-container">
         <div class="linear-nav">
@@ -30,13 +32,13 @@
                     <a href="people.html" class="nav-link" id="navPeople">People</a>
                     <a href="project.html" class="nav-link" id="navProjects">Projects</a>
                 </div>
-                
-                <!--hidden--> 
+
+                <!--hidden-->
                 <div></div>
             </div>
-        </div>    
+        </div>
     </nav>
-    
+
     <!-- HERO -->
     <div class="hero-section">
         <h1 class="hero-title">BugTracker Dashboard</h1>
@@ -55,30 +57,31 @@
         </main>
 
         <aside class="quick-actions-container dash-card">
-                <h2 class="dash-title">Quick Actions</h2>
+            <h2 class="dash-title">Quick Actions</h2>
 
-                <button class="quick-action-button" onclick="openCreate()">
-                    <i class="fa fa-ticket quick-action-icon" aria-hidden="true"></i>
-                    <div class="quick-action-text">Add New Ticket</div>
-                </button>
+            <button class="quick-action-button" onclick="openCreate()">
+                <i class="fa fa-ticket quick-action-icon" aria-hidden="true"></i>
+                <div class="quick-action-text">Add New Ticket</div>
+            </button>
 
-                <button class="quick-action-button" onclick="window.location.href='people.html'">
-                    <i class="fa fa-user quick-action-icon" aria-hidden="true"></i>
-                    <div class="quick-action-text">Add New Person</div>
-                </button>
+            <button class="quick-action-button" onclick="window.location.href='people.html'">
+                <i class="fa fa-user quick-action-icon" aria-hidden="true"></i>
+                <div class="quick-action-text">Add New Person</div>
+            </button>
 
-                <button class="quick-action-button" onclick="window.location.href='project.html'">
-                    <i class="fa fa-tasks quick-action-icon" aria-hidden="true"></i>
-                    <div class="quick-action-text">Add New Project</div>
-                </button>
+            <button class="quick-action-button" onclick="window.location.href='project.html'">
+                <i class="fa fa-tasks quick-action-icon" aria-hidden="true"></i>
+                <div class="quick-action-text">Add New Project</div>
+            </button>
         </aside>
     </div>
-     
 
-</div>
+
+    </div>
     <!-- Modal -->
     <div id="modal-bg" class="modal-bg" style="display:none" onclick="bgClose(event)">
-    <div class="modal" id="modal-box"></div>
-    </div>     
+        <div class="modal" id="modal-box"></div>
+    </div>
 </body>
+
 </html>
