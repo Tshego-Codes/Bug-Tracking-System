@@ -31,183 +31,86 @@
                     <a href="people.html" class="nav-link" id="navPeople">People</a>
                     <a href="project.html" class="nav-link" id="navProjects">Projects</a>
                 </div>
-                
-                <!--hidden--> 
+
+                <!--hidden-->
                 <div></div>
             </div>
-        </div>    
+        </div>
     </nav>
 
-    <div class="container">
-        <div class="nav-links">
-            <a href="people.html" class="active">Manage People</a>
-            <a href="project.html">Manage Projects</a>
-        </div>
+    <div class="form-content-wrapper">
 
-        <div class="card">
-            <div class="card-header bg-primary">
-                Add New Person
-            </div>
-            <div class="card-body">
-                <form id="personForm">
-                    <div class="row">
-                        <div class="col-md-6 mb-3">
-                            <label class="form-label">First Name</label>
-                            <input type="text" id="firstName" class="form-control" required>
+        <div class="form-content">
+            <div class="card">
+                <h3 class="card-header bg-primary">
+                    Add a New Person
+                </h3>
+                <div class="card-body">
+                    <form id="personForm">
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">First Name</label>
+                                <input type="text" id="firstName" class="form-control" required>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Surname</label>
+                                <input type="text" id="surname" class="form-control" required>
+                            </div>
                         </div>
-                        <div class="col-md-6 mb-3">
-                            <label class="form-label">Surname</label>
-                            <input type="text" id="surname" class="form-control" required>
+                        <div class="mb-3">
+                            <label class="form-label">Email</label>
+                            <input type="email" id="email" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Username</label>
+                            <input type="text" id="username" class="form-control" required>
+                        </div>
+                        <button type="button" class="btn btn-primary" onclick="addPersonFromPage()">Save Person</button>
+                        <button type="button" class="btn btn-secondary" onclick="clearForm()">Clear</button>
+                    </form>
+                </div>
+                <div class="card">
+                    <h3 class="card-header bg-primary">
+                        List of People
+                    </h3>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-striped table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Full Name</th>
+                                        <th>Email</th>
+                                        <th>Username</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="peopleTable">
+                                    <tr>
+                                        <td colspan="4" class="text-center">Loading...</td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
-                    <div class="mb-3">
-                        <label class="form-label">Email</label>
-                        <input type="email" id="email" class="form-control" required>
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label">Username</label>
-                        <input type="text" id="username" class="form-control" required>
-                    </div>
-                    <button type="button" class="btn btn-primary" onclick="addPerson()">Save Person</button>
-                    <button type="button" class="btn btn-secondary" onclick="clearForm()">Clear</button>
-                </form>
-            </div>
-        </div>
-
-        <div class="card">
-            <div class="card-header bg-primary">
-                People List
-            </div>
-            <div class="card-body">
-                <div class="table-responsive">
-                    <table class="table table-striped table-hover">
-                        <thead>
-                            <tr>
-                                <th>Full Name</th>
-                                <th>Email</th>
-                                <th>Username</th>
-                                <th>Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody id="peopleTable">
-                            <tr>
-                                <td colspan="4" class="text-center">Loading...</td>
-                            </tr>
-                        </tbody>
-                    </table>
                 </div>
             </div>
         </div>
+        <aside class="form-actions">
+            <h3>Quick Actions </h3>
+            <button class="form-action-button" onclick="window.location.href='people.html'">
+                <i class="fa fa-user quick-action-icon" aria-hidden="true"></i>
+                <div class="form-action-text">Manage People</div>
+            </button>
+            <button class="form-action-button" onclick="window.location.href='project.html'">
+                <i class="fa fa-tasks quick-action-icon" aria-hidden="true"></i>
+                <div class="form-action-text">Manage Projects</div>
+            </button>
+        </aside>
     </div>
 
     <footer>
         <p>Bug Tracking System - People Management</p>
     </footer>
-
-    <script>
-        let people = JSON.parse(localStorage.getItem("people")) || [];
-
-        function savePeople() {
-            localStorage.setItem("people", JSON.stringify(people));
-        }
-
-        function generateId() {
-            return Date.now() + Math.floor(Math.random() * 1000);
-        }
-
-        function addPerson() {
-            let firstName = document.getElementById("firstName").value.trim();
-            let surname = document.getElementById("surname").value.trim();
-            let email = document.getElementById("email").value.trim();
-            let username = document.getElementById("username").value.trim();
-
-            if (!firstName || !surname || !email || !username) {
-                alert("Please fill in all fields");
-                return;
-            }
-
-            let newPerson = {
-                id: generateId(),
-                name: firstName,
-                surname: surname,
-                email: email,
-                username: username
-            };
-
-            people.push(newPerson);
-            savePeople();
-            renderPeopleTable();
-            clearForm();
-            alert("Person added successfully!");
-        }
-
-        function deletePerson(id) {
-            if (confirm("Delete this person?")) {
-                people = people.filter(p => p.id != id);
-                savePeople();
-                renderPeopleTable();
-            }
-        }
-
-        function editPerson(id) {
-            let person = people.find(p => p.id == id);
-            if (person) {
-                document.getElementById("firstName").value = person.name;
-                document.getElementById("surname").value = person.surname;
-                document.getElementById("email").value = person.email;
-                document.getElementById("username").value = person.username;
-                people = people.filter(p => p.id != id);
-                savePeople();
-                renderPeopleTable();
-                alert("Edit this person and click Save Person to update.");
-            }
-        }
-
-        function clearForm() {
-            document.getElementById("firstName").value = "";
-            document.getElementById("surname").value = "";
-            document.getElementById("email").value = "";
-            document.getElementById("username").value = "";
-        }
-
-        function renderPeopleTable() {
-            let tbody = document.getElementById("peopleTable");
-            if (people.length === 0) {
-                tbody.innerHTML = '<tr><td colspan="4" class="text-center">No people found. Add a person above.</td></tr>';
-                return;
-            }
-            tbody.innerHTML = "";
-            people.forEach(person => {
-                tbody.innerHTML += `
-                <tr>
-                    <td>${escapeHtml(person.name)} ${escapeHtml(person.surname)}</td>
-                    <td>${escapeHtml(person.email)}</td>
-                    <td>${escapeHtml(person.username)}</td>
-                    <td class="table-actions">
-                        <button class="btn btn-warning" onclick="editPerson('${person.id}')">Edit</button>
-                        <button class="btn btn-danger" onclick="deletePerson('${person.id}')">Delete</button>
-                    </td>
-                </tr>
-            `;
-            });
-        }
-
-        function escapeHtml(str) {
-            if (!str) return '';
-            return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#39;');
-        }
-
-        if (people.length === 0) {
-            people = [
-                { id: generateId(), name: "John", surname: "Doe", email: "john@mail.com", username: "johnd" },
-                { id: generateId(), name: "Jane", surname: "Smith", email: "jane@mail.com", username: "janes" }
-            ];
-            savePeople();
-        }
-
-        renderPeopleTable();
-    </script>
-
 </body>
 
 </html>
