@@ -7,7 +7,7 @@
     <link href="https://cdn.jsdelivr.netpm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="stylesheet" href="master_styles.css">
-    <script src="app.js" defer></script>
+    <script src="app2.js" defer></script>
 </head>
 <body>
     <nav class="nav-container">
@@ -39,22 +39,41 @@
     
     <!-- HERO -->
     <div class="hero-section">
-        <h1 class="hero-title">BUG TRACKER DASHBOARD</h1>
+        <h1 class="hero-title">BugTracker Dashboard</h1>
         <p class="hero-subtitle">Track, manage, and resolve issues efficiently</p>
     </div>
 
     <!--DASH BOARD STATS-->
-    
-<div class="container">
-  <div class="top-bar">
-    <h1>Issue Tracker</h1>
-    <button class="btn primary" onclick="openCreate()">+ New ticket</button>
-  </div>
- 
-  <div class="stats-bar" id="stats-bar"></div>
- 
- 
-  <div class="ticket-grid" id="ticket-list"></div>
+
+    <div class="layout">
+        <main class="main-section dash-card">
+            <h2 class="dash-title">Summary of Tickets</h2>
+            <div class="stats-bar home-stats-bar" id="stats-bar"></div>
+
+            <h2 class="dash-title">Summary of People and Projects</h2>
+            <div class="stats-bar" id="people-project-stats"></div>
+        </main>
+
+        <aside class="quick-actions-container dash-card">
+                <h2 class="dash-title">Quick Actions</h2>
+
+                <button class="quick-action-button" onclick="openCreate()">
+                    <i class="fa fa-ticket quick-action-icon" aria-hidden="true"></i>
+                    <div class="quick-action-text">Add New Ticket</div>
+                </button>
+
+                <button class="quick-action-button" onclick="window.location.href='people.html'">
+                    <i class="fa fa-user quick-action-icon" aria-hidden="true"></i>
+                    <div class="quick-action-text">Add New Person</div>
+                </button>
+
+                <button class="quick-action-button" onclick="window.location.href='project.html'">
+                    <i class="fa fa-tasks quick-action-icon" aria-hidden="true"></i>
+                    <div class="quick-action-text">Add New Project</div>
+                </button>
+        </aside>
+    </div>
+     
 
 </div>
     <!-- Modal -->
