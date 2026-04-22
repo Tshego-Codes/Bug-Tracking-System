@@ -51,6 +51,7 @@
     font-weight: 600;
     color: white;
     letter-spacing: -0.3px;
+    text-decoration: none;
 }
 
 /* NAV LINKS */
@@ -73,11 +74,11 @@
 
 .nav-link:hover {
     color: white;
+    transition: all 0.2s ease;
 }
 
-.nav-link.active {
+.active {
     color: white;
-    position: relative;
 }
 
 /* ============================================================================================= */

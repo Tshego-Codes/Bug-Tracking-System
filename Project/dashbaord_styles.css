@@ -58,11 +58,12 @@ justify-content: center;
     color: white;
 }
 
-.logo-text {
+a .logo-text {
     font-size: 18px;
     font-weight: 600;
     color: white;
     letter-spacing: -0.3px;
+    text-decoration: none;
 }
 
 /* Putting navigation links in the middle */
