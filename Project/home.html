@@ -7,6 +7,8 @@
     <link href="https://cdn.jsdelivr.netpm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="stylesheet" href="master_styles.css">
+    <script src="app.js" defer></script>
+
 </head>
 <!--    <link rel="stylesheet" href="home_styles.css"> -->
 <!--    <link rel="stylesheet" href="nav_styles.css"> -->
@@ -14,28 +16,29 @@
 <body>
 
     <nav class="nav-container">
-        
-        <div class="nav-wrapper">
-            <!-- Logo -->
-            <div class="nav-logo">
-                <div class="logo-icon">
-                    <i class="fas fa-bug"></i>
+        <div class="linear-nav">
+            <div class="nav-wrapper">
+                <!-- Logo -->
+                <div class="nav-logo">
+                    <div class="logo-icon">
+                        <i class="fas fa-bug"></i>
+                    </div>
+                    <span class="logo-text">BugTracker</span>
                 </div>
-                <span class="logo-text">BugTracker</span>
+
+                <!-- Center Links - LIKE LINEAR -->
+
+                <div class="nav-links">
+                    <a href="home.html" class="nav-link active" id="navDashboard">Dashboard</a>
+                    <a href="issue_tracker.html" class="nav-link" id="navIssues">Tickets</a>
+                    <a href="people.html" class="nav-link" id="navPeople">People</a>
+                    <a href="project.html" class="nav-link" id="navProjects">Projects</a>
+                </div>
+                
+                <!--hidden--> 
+                <div></div>
             </div>
-
-            <!-- Center Links - LIKE LINEAR -->
-
-            <div class="nav-links">
-                <a href="home.html" class="nav-link active" id="navDashboard">Dashboard</a>
-                <a href="issue_tracker.html" class="nav-link" id="navIssues">Tickets</a>
-                <a href="people.html" class="nav-link" id="navPeople">People</a>
-                <a href="project.html" class="nav-link" id="navProjects">Projects</a>
-            </div>
-
-            <!--hidden--> 
-            <div></div>
-        </div>
+        </div>    
     </nav>
     
     <!-- HERO -->
@@ -62,16 +65,9 @@
   <div class="ticket-grid" id="ticket-list"></div>
 
 </div>
- 
     <!-- Modal -->
     <div id="modal-bg" class="modal-bg" style="display:none" onclick="bgClose(event)">
     <div class="modal" id="modal-box"></div>
-    </div> 
-
-
-    <script src="issues.js"></script>
-    <!--DASH BOARD SCRIPT-->
-    <script src="dashboard-card-styles.js"></script>
-    
+    </div>     
 </body>
 </html>
