@@ -484,10 +484,7 @@ function getAllIssues() {
 // ===========================================================================================================================================================//
 
 // PEOPLE JS
-
-
-
-//  PERSON CRUD FUNCTIONS 
+// PERSON CRUD FUNCTIONS 
 // This function adds a new person to the people array.
 // It is called when the user submits the add person form.
 function addPerson(name, surname, email, username) {
@@ -855,7 +852,95 @@ if (document.readyState === 'loading') {
 // END PEOPLE JS
 // ===========================================================================================================================================================//
 // ===========================================================================================================================================================//
+//PROJECT FORM JS
+let myProject = JSON.parse(localStorage.getItem("projects")) || [];
 
+        function saveProjects() {
+            localStorage.setItem("projects", JSON.stringify(myProject));
+        }
+
+        function generateId() {
+            return Date.now() + Math.floor(Math.random() * 1000);
+        }
+
+        function addProject() {
+            let name = document.getElementById("projectName").value.trim();
+            if (!name) {
+                alert("Please enter a project name");
+                return;
+            }
+
+            let newProject = {
+                id: generateId(),
+                name: name
+            };
+
+            myProject.push(newProject);
+            saveProjects();
+            renderProjectsTable();
+            clearForm();
+            alert("Project added successfully!");
+        }
+
+        function deleteProject(id) {
+            if (confirm("Delete this project?")) {
+                myProject = myProject.filter(p => p.id != id);
+                saveProjects();
+                renderProjectsTable();
+            }
+        }
+
+        function editProject(id) {
+            let project = myProject.find(p => p.id == id);
+            if (project) {
+                document.getElementById("projectName").value = project.name;
+                myProject = myProject.filter(p => p.id != id);
+                saveProjects();
+                renderProjectsTable();
+                alert("Edit this project and click Save Project to update.");
+            }
+        }
+
+        function clearForm() {
+            document.getElementById("projectName").value = "";
+        }
+
+        function renderProjectsTable() {
+            let tbody = document.getElementById("projectsTable");
+            if (myProject.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="3" class="text-center">No projects found. Add a project above.</td></tr>';
+                return;
+            }
+            tbody.innerHTML = "";
+            myProject.forEach(project => {
+                tbody.innerHTML += `
+                <tr>
+                    <td>${escapeHtml(project.name)}</td>
+                    <td><code>${escapeHtml(project.id)}</code></td>
+                    <td class="table-actions">
+                        <button class="btn btn-warning" onclick="editProject('${project.id}')">Edit</button>
+                        <button class="btn btn-danger" onclick="deleteProject('${project.id}')">Delete</button>
+                    </td>
+                </tr>
+            `;
+            });
+        }
+
+        function escapeHtml(str) {
+            if (!str) return '';
+            return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+        }
+
+        if (myProject.length === 0) {
+            myProject = [
+                { id: generateId(), name: "Bug Tracking System" },
+                { id: generateId(), name: "E-Commerce Website" },
+                { id: generateId(), name: "Mobile Banking App" }
+            ];
+            saveProjects();
+        }
+
+        renderProjectsTable();
 // ===========================================================================================================================================================//
 // DASHBOARD JS
 
